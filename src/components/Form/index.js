@@ -10,9 +10,16 @@ export default function Form(){
     const [messageImc, setMessageImc] = useState("Preencha o peso e altura")
     const [imc, setImc] = useState(null)
     const [textButton, setTextButton] = useState("Calcular")
+    const [errorMessage, setErrorMessage] = useState(null)
 
     function imcCalculator(){
         return setImc((weight/(height * height)).toFixed(2));
+    }
+
+    function verificationImc(){
+        if(imc == null){
+            setErrorMessage("Campo obrigatório*")
+        }
     }
 
     function validationImc(){
@@ -27,21 +34,24 @@ export default function Form(){
         setImc(null)
         setTextButton("Calcular")
         setMessageImc("Preencha o peso e altura")
+        verificationImc()
     }
 
     return (
         <View style={styles.formContext}>
             <View style={styles.form}>
                 <Text style={styles.formLabel}>Altura</Text>
+                <Text style={styles.errorMessage}>{errorMessage}</Text>
                 <TextInput style={styles.input} onChangeText={setHeight}
                 value={height}
                 placeholder="Ex. 1.75"
                 keyboardType="numeric"></TextInput>
-                <Text style={styles.formLabel}>Peso</Text>   
+                <Text style={styles.formLabel}>Peso</Text> 
+                <Text style={styles.errorMessage}>{errorMessage}</Text>  
                 <TextInput style={styles.input} onChangeText={setWeight}
                 value={weight} 
                 placeholder="Ex. 75.373"
-                keyboardType="numeric"></TextInput>
+                keyboardType  ="numeric"></TextInput>
                 <TouchableOpacity style={styles.buttonCalculator}
                 onPress={() => {
                     validationImc()
