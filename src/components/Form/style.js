@@ -2,23 +2,19 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     formContext: {
-        width: "100%",
-        height: "100%",
-        justifyContent: "space-around",
-        bottom: 0,
+        flex: 1,
         backgroundColor: "#FFFFFF",
+        marginTop: 30,
         alignItems: "center",
         marginTop: 30,
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
-        marginTop: 20,
-        paddingTop: 15
+        marginTop: 40,
+        paddingTop: 30
     },
     form: {
         width: "100%",
-        height: "auto", //deixa o conteúdo volátil de acordo com o tamanho da tela e número de componentes
-        marginTop: 30,
-        padding: 10
+        paddingTop: 20
     },
     formLabel: {
         color: "#000000",
